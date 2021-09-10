@@ -24,6 +24,10 @@ class UsersController < ApplicationController
 		user = User.find(params[:id])
 		user.target = params[:target]
 		
+		# rubocop:disable Style/NumericPredicate
+    user.expenditures.destroy_all if user.target == 0
+		# rubocop:enable Style/NumericPredicate
+		
 		if user.save
       render json: user, status: :ok
     else
