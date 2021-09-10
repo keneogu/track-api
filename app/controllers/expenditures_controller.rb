@@ -15,6 +15,14 @@ class ExpendituresController < ApplicationController
     else
       render json: expenditure.errors, status: :unprocessable_entity
     end
+	end
+	
+	def destroy
+    expenditure = Expenditure.find(params[:id])
+
+    expenditure.destroy
+
+    render json: expenditure, status: :ok
   end
 	
 	private
