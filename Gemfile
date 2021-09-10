@@ -22,13 +22,19 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+gem 'jwt'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capybara'
+  gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development do
