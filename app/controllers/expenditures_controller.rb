@@ -4,6 +4,18 @@ class ExpendituresController < ApplicationController
 
     render json: @expenditures, status: :ok
 	end
+
+	def create
+    expenditure = Expenditure.new(expenditure_params)
+
+    Rails.logger.debug expenditure
+
+    if expenditure.save
+      render json: expenditure, status: :ok
+    else
+      render json: expenditure.errors, status: :unprocessable_entity
+    end
+  end
 	
 	private
 
