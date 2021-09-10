@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
+	require 'jwt'
 	def show
-	end
+		user = User.validate_user(params[:id])
 
-	def create
-		
-	end
-
-	def update
+		if user
+      render json: user, status: :ok
+    else
+      render json: user, status: :not_found
+    end
 	end
 
 	private
