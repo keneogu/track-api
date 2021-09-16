@@ -32,5 +32,34 @@ RSpec.describe Expenditure, type: :model do
       subject.user_id = test_user.id
       expect(subject).not_to be_valid
     end
+
+    # DATE TESTING
+
+    it "expects the subject to be invalid for it doesn't have a date" do
+      subject.date = nil
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = 1
+      subject.user_id = test_user.id
+      expect(subject).not_to be_valid
+    end
+
+    it "expects the subject to be invalid for its date's format is not correct 1" do
+      subject.date = 'Hola me llamo Tadeu'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = 1
+      subject.user_id = test_user.id
+      expect(subject).not_to be_valid
+    end
+
+    it "expects the subject to be invalid for its date's format is not correct 2" do
+      subject.date = '09-16-2021'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = 1
+      subject.user_id = test_user.id
+      expect(subject).not_to be_valid
+    end
   end
 end
