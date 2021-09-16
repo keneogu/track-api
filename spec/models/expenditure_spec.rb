@@ -120,4 +120,7 @@ RSpec.describe Expenditure, type: :model do
       expect(subject).not_to be_valid
     end
   end
+  describe 'associations' do
+    it { is_expected.to belong_to(:user) }
+  end
 end
