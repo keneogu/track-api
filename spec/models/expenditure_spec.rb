@@ -61,5 +61,43 @@ RSpec.describe Expenditure, type: :model do
       subject.user_id = test_user.id
       expect(subject).not_to be_valid
     end
+
+    # DESCRIPTION TESTING
+
+    it "expects the subject to be invalid for it doesn't have a description" do
+      subject.date = '2021/04/14'
+      subject.value = '10'
+      subject.description = nil
+      subject.category = 1
+      subject.user_id = test_user.id
+      expect(subject).not_to be_valid
+    end
+
+    it 'expects the subject to be invalid for its description is too short' do
+      subject.date = '2021/04/14'
+      subject.value = '10'
+      subject.description = '123456789'
+      subject.category = 1
+      subject.user_id = test_user.id
+      expect(subject).not_to be_valid
+    end
+
+    # EXPENSE ID TESTING
+
+    it "expects the subject to be invalid for it doesn't have a expense id" do
+      subject.date = '20200414'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = nil
+      expect(subject).not_to be_valid
+    end
+
+    it 'expects the subject to be invalid for it has an invalid expense id' do
+      subject.date = '20200414'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = 'Hola me llamo Tadeu'
+      expect(subject).not_to be_valid
+    end
   end
 end
