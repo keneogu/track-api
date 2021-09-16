@@ -99,5 +99,25 @@ RSpec.describe Expenditure, type: :model do
       subject.category = 'Hola me llamo Tadeu'
       expect(subject).not_to be_valid
     end
+
+    # USER ID TESTING
+
+    it "expects the subject to be invalid for it doesn't have a user id" do
+      subject.date = '20200414'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = 1
+      subject.user_id = nil
+      expect(subject).not_to be_valid
+    end
+
+    it 'expects the subject to be invalid for it has an invalid user id' do
+      subject.date = '20200414'
+      subject.value = '10'
+      subject.description = "This is some expenditure decription, so we're just making some big text."
+      subject.category = 1
+      subject.user_id = 'Hola me llamo Tadeu'
+      expect(subject).not_to be_valid
+    end
   end
 end
