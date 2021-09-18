@@ -14,9 +14,9 @@ RSpec.describe User, type: :model do
       subject.username = nil
       subject.target = 0
       expect(subject).not_to be_valid
-		end
+    end
 
-		it "expects the subject to be invalid for it's length is not enough" do
+    it "expects the subject to be invalid for it's length is not enough" do
       subject.username = '123'
       subject.target = 0
       expect(subject).not_to be_valid
@@ -39,9 +39,9 @@ RSpec.describe User, type: :model do
       subject.target = 0
       expect(subject).to be_valid
     end
-	end
+  end
 
-	describe 'associations' do
+  describe 'associations' do
     it { is_expected.to have_many(:expenditures) }
   end
 end

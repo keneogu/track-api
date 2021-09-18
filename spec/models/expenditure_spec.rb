@@ -12,7 +12,7 @@ RSpec.describe Expenditure, type: :model do
     it { is_expected.to validate_presence_of(:date) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:category) }
-  
+
     # VALUE TESTING
 
     it "expects the subject to be invalid for it doesn't have a value" do
